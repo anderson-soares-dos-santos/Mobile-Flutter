@@ -1,0 +1,69 @@
+/*
+LISTA DE EXERCICIOS  - 07AGO2021
+Disciplina  : PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS
+Professor   : JOSEFFE BARROSO DE OLIVEIRA
+Autor(a)    : ANDERSON SOARES DOS SANTOS
+MATRICULA   : 1290481923017
+Data atual  : 15/08/2021  - LIST E MAP - EXERCICIO 1
+EXERCICO 01 : 1. Armazenar dez números na memória do computador.
+                  Exibir os valores na ordem inversa à da digitação.
+*/
+
+
+
+void main() {
+  
+  //DECLARANDO VARIÁVEIS
+	   
+     
+  dynamic tamanhoVetor; // tamanho do vetor
+    
+  //inserindo valores
+  
+  Numero v1  = Numero("10");
+  Numero v2  = Numero("9");
+  Numero v3  = Numero("8");
+  Numero v4  = Numero("7");
+  Numero v5  = Numero("6");
+  Numero v6  = Numero("5");
+  Numero v7  = Numero("4");
+  Numero v8  = Numero("3");
+  Numero v9  = Numero("2");
+  Numero v10 = Numero("1");
+  
+  
+  final carros = [v1, v2,v3 , v4 ,v5 ,v6 ,v7 ,v8 ,v9 ,v10];
+//   carros.add(c1);
+//   carros.add(c2);
+//   carros.add(c3);
+  
+  //exibindo conteudo e tamanho do vetor
+  
+  print("Lista: $carros, length: ${carros.length}");
+  
+ //listando vetor de forma invertida 
+ //converetendo String para int
+ //variavel tamanhoVetor é dynamic;
+  tamanhoVetor = ({carros.length});
+  
+ 
+  
+   for (int i = (tamanhoVetor); i > 0; i--) {
+            print(" Numero: ${valor}");
+        }
+  
+ /* 
+  for(Numero c in carros) {
+    print(" Numero: ${c.valor}");
+  }
+}
+  */
+class Numero {
+  String valor;
+  
+  Numero(this.valor);
+  
+  String toString () {
+    return valor;
+  }
+}
