@@ -1,5 +1,22 @@
 import 'package:flutter/material.dart';
+import 'home.dart';
+/*
+void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: widgetHome(),
+    );
+  }
+}
+
+*/
 void main() {
 
   runApp(MyApp());
@@ -11,7 +28,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp (
       debugShowCheckedModeBanner: false,
-      home:Home(),
+      //home:Home(),
+      home: widgetHome(),
 
     );
 
