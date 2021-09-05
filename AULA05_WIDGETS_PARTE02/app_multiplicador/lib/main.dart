@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home.dart';
 
 void main() {
 
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp (
       debugShowCheckedModeBanner: false,
-      home:Home(),
+      //home:Home(),
+      home: widgetHome(),
 
     );
 
@@ -31,12 +33,12 @@ class _HomeState extends State<Home> {
   String infoResultado = "Informe os números!";
 
 
-  void _calcularMultiplicacao(){
+  void _calcular(){
     setState(() {
       double n1 = double.parse(n1Controller.text);
-      double n2 = double.parse(n2Controller.text);
+      double n2 = double.parse(n1Controller.text);
 
-      double resultado = n1 * n2;
+      double resultado = n1+n2;
 
       infoResultado = 'RESULTADO : $resultado';
       //infoResultado = 'Resultado: $resultado';
@@ -47,7 +49,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Text("MULTIPLICADOR DE NÚMEROS"),
+        title:Text("SOMADOR DE NÚMEROS"),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),
@@ -98,15 +100,14 @@ class _HomeState extends State<Home> {
                 child:Container(
                   height: 50.0,
                   child:RaisedButton(
-                    onPressed: _calcularMultiplicacao,
+                    onPressed: _calcular,
                     child:Text("CALCULAR",
                       style:TextStyle(
-                          color:Colors.white,
-                          fontWeight: FontWeight.bold,
+                          color:Colors.black,
                           fontSize: 20.0
                       ),
                     ),
-                    color:Colors.black,
+                    color:Colors.blue,
                   ),
                 )
             ),
