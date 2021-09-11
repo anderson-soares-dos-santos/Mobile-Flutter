@@ -213,11 +213,11 @@ class _HomeState extends State<widgetHome> {
 
   _foto() {
     return Center(
-      child: Image.network(
-        'https://s2.glbimg.com/fLLjtcmosminFpbQVwWjJ6qEdNU=/512x320/smart/e.glbimg.com/og/ed/f/original/2015/09/10/ads_macgyver1.jpg',
+      child: Image.asset(
+        "assets/images/alcoolgasolina.jpg",
 
-        height: 150,
-        width: 150,
+        //height: 150,
+        //width: 150,
       ),
     );
   }

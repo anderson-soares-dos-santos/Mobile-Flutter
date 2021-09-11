@@ -79,6 +79,7 @@ class _HomeState extends State<widgetHome> {
           //mainAxisAlignment: MainAxisAlignment.center,
 
           children:<Widget>[
+
             //FOTO APOS TITULO
             // _foto(),
             //TEXTO APOS PRESSIONAR BOTAO
