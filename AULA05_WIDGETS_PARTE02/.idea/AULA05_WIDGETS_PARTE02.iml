@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/app_multiplicador/build" />
+      <excludeFolder url="file://$MODULE_DIR$/app_multiplicador/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/app_contador_pessoas/build" />
+      <excludeFolder url="file://$MODULE_DIR$/app_contador_pessoas/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/app_somador_numeros/build" />
+      <excludeFolder url="file://$MODULE_DIR$/app_somador_numeros/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/app_conceitos/build" />
+      <excludeFolder url="file://$MODULE_DIR$/app_conceitos/.pub" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
