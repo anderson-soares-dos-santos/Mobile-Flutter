@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.andersonsoares.app_cadastro_contatos.app_cadastro_contatos"
+        applicationId "com.andersonsoares.app_cadastro_tarefas.app_cadastro_tarefas"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()

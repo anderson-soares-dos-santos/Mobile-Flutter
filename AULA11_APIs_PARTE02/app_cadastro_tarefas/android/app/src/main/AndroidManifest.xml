@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.andersonsoares.app_cadastro_contatos.app_cadastro_contatos">
+    package="com.andersonsoares.app_cadastro_tarefas.app_cadastro_tarefas">
    <application
-        android:label="app_cadastro_contatos"
+        android:label="app_cadastro_tarefas"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_cadastro_contatos/Tarefa.dart';
+import 'package:app_cadastro_tarefas/Tarefa.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -134,76 +134,79 @@ class _HomeState extends State<Home> {
     super.initState();
     _recuperarTarefas();
   }
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Minhas tarefas"),
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.black,
+
+
       ),
       body:
-      Column(
 
-        children: <Widget>[
-          //FOTO APOS TITULO
-          _foto(),
-          Expanded(
-              child:ListView.builder(
+            Column(
+              children: <Widget>[
+                //FOTO APOS TITULO
+                _foto(),
+                Expanded(
 
-                  itemCount: _tarefas.length,
-                  itemBuilder: (context, index) {
-                    final tarefa = _tarefas[index];
+                    child:ListView.builder(
 
-                    return Card(
-                      child: ListTile(
-                        title: Text(tarefa.title),
-                        subtitle: Text(tarefa.description),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () {
-                                _exibirTelaCadastro(tarefa: tarefa);
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(right: 16),
-                                child: Icon(
-                                  Icons.edit,
-                                  color: Colors.green,
-                                ),
+                        itemCount: _tarefas.length,
+                        itemBuilder: (context, index) {
+                          final tarefa = _tarefas[index];
+
+                          return Card(
+                            child: ListTile(
+                              title: Text(tarefa.title),
+                              subtitle: Text(tarefa.description),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  GestureDetector(
+                                    onTap: () {
+                                      _exibirTelaCadastro(tarefa: tarefa);
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(right: 16),
+                                      child: Icon(
+                                        Icons.edit,
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      _removerTarefa(tarefa.id);
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(right: 0),
+                                      child: Icon(
+                                        Icons.remove_circle,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                _removerTarefa(tarefa.id);
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(right: 0),
-                                child: Icon(
-                                  Icons.remove_circle,
-                                  color: Colors.red,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  }))
-        ],
-      ),
+                          );
+                        }))
+              ],
+            ),
+
+
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.black,
           foregroundColor: Colors.white,
           child: Icon(Icons.add),
           onPressed: () {
             _exibirTelaCadastro();
-          }),
+          }
+      ),
     );
+
   }
 }
 
