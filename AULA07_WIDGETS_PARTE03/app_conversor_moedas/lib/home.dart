@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+
 class widgetHome extends StatefulWidget {
   const widgetHome({Key? key}) : super(key: key);
 
@@ -25,17 +26,6 @@ class _HomeState extends State<widgetHome> {
   double CotacaoEuro = 6.24; // valor da cotação do Euro em reais(R$)
   double CalcConversao = 0; // valor do calculo da cotação realizada
 
-  void _visualizarForm(){
-    setState(() {
-      var n1Nome = (n1Controller.text);
-      // informar ao usuário os dados do form digitado
-      //infoResultado = "DADOS INFORMADOS";
-      f1Valor = '  $n1Nome \n';
-      f3MoedaDe =  ' $n3MoedaDe \n';
-      f4MoedaPara = ' $n4MoedaPara \n';
-    });
-  }
-
   void _converter(){
     setState(() {
       n1Valor = double.parse(n1Controller.text);
@@ -43,15 +33,17 @@ class _HomeState extends State<widgetHome> {
       //CONVERTER DE REAL PARA DOLAR
       if(n3MoedaDe == 'REAL(R\$)' && n4MoedaPara == 'DOLAR(US\$)' )
       {
+
         //fazendo o calculo
         // conversao de REAL PARA DOLAR
-        CalcConversao = n1Valor / CotacaoDolar ;
+        CalcConversao = (n1Valor / CotacaoDolar) ;
 
         // informar ao usuário os dados do form digitado
         infoResultado = "RESULTADO";
         f1Valor = ' US\$ $CalcConversao \n';
         f3MoedaDe =  ' $n3MoedaDe \n';
         f4MoedaPara = ' $n4MoedaPara \n';
+
       }
       //CONVERSAO DE DOLAR PARA REAL
       else if(n3MoedaDe == 'DOLAR(US\$)' && n4MoedaPara == 'REAL(R\$)' )
@@ -105,6 +97,9 @@ class _HomeState extends State<widgetHome> {
         //1º CONVERTE DE EURO PARA REAL
         CalcConversao = n1Valor * CotacaoEuro ;
        // infoResultado = '  VALOR EM REAL(R\$) $CalcConversao ';
+
+
+
         infoResultado = "RESULTADO";
         f1Valor = 'R\$ $CalcConversao \n';
         f3MoedaDe =  ' $n3MoedaDe \n';
@@ -172,9 +167,7 @@ class _HomeState extends State<widgetHome> {
 
       );
   }
-/*
 
- */
   _body() {
     return
       SingleChildScrollView(
