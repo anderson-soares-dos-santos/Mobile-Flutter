@@ -1,4 +1,4 @@
-import 'package:app_storages6/model/Anotacao.dart';
+import 'package:app_lista_de_compras/model/Anotacao.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -22,13 +22,26 @@ class AnotacaoHelper {
       return _db;
     }
   }
-
-  _onCreate(Database db, int version) async {
+/*
+ _onCreate(Database db, int version) async {
     String sql = "CREATE TABLE $nomeTabela ("
         "id INTEGER PRIMARY KEY AUTOINCREMENT, "
         "titulo VARCHAR, "
         "descricao TEXT, "
         "data DATETIME)";
+    await db.execute(sql);
+  }
+
+ */
+
+  _onCreate(Database db, int version) async {
+    String sql = "CREATE TABLE $nomeTabela ("
+        "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+        "mercadoria VARCHAR,"
+        "quantidade VARCHAR)";
+       // "titulo VARCHAR, "
+       // "descricao TEXT, "
+       //"data DATETIME)";
     await db.execute(sql);
   }
 
@@ -50,7 +63,7 @@ class AnotacaoHelper {
 
   recuperarAnotacoes() async {
     var bancoDados = await db;
-    String sql = "SELECT * FROM $nomeTabela ORDER BY data DESC ";
+    String sql = "SELECT * FROM $nomeTabela ORDER BY id DESC ";
     List anotacoes = await bancoDados.rawQuery(sql);
     return anotacoes;
   }

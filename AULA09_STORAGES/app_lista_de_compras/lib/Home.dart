@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app_storages6/helper/AnotacaoHelper.dart';
-import 'package:app_storages6/model/Anotacao.dart';
+import 'package:app_lista_de_compras/helper/AnotacaoHelper.dart';
+import 'package:app_lista_de_compras/model/Anotacao.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -10,8 +10,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  TextEditingController _tituloController = TextEditingController();
-  TextEditingController _descricaoController = TextEditingController();
+  TextEditingController _mercadoriaController = TextEditingController();
+  TextEditingController _quantidadeController = TextEditingController();
+
   var _db = AnotacaoHelper();
   List<Anotacao> _anotacoes = List<Anotacao>();
 
@@ -19,16 +20,15 @@ class _HomeState extends State<Home> {
     String textoSalvarAtualizar = "";
     if (anotacao == null) {
       //salvando
-      _tituloController.text = "";
-      _descricaoController.text = "";
+      _mercadoriaController.text = "";
+      _quantidadeController.text = "";
       textoSalvarAtualizar = "Salvar";
     } else {
       //atualizar
-      _tituloController.text = anotacao.titulo;
-      _descricaoController.text = anotacao.descricao;
+      _mercadoriaController.text = anotacao.mercadoria;
+      _quantidadeController.text = anotacao.quantidade;
       textoSalvarAtualizar = "Atualizar";
     }
-
     showDialog(
         context: context,
         builder: (context) {
@@ -38,15 +38,15 @@ class _HomeState extends State<Home> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 TextField(
-                  controller: _tituloController,
+                  controller: _mercadoriaController,
                   autofocus: true,
                   decoration: InputDecoration(
-                      labelText: "Título", hintText: "Digite título..."),
+                      labelText: "Mercadoria", hintText: "Digite a mercadoria..."),
                 ),
                 TextField(
-                  controller: _descricaoController,
+                  controller:  _quantidadeController,
                   decoration: InputDecoration(
-                      labelText: "Descrição", hintText: "Digite descrição..."),
+                      labelText: "Quantidade", hintText: "Digite a quantidade..."),
                 )
               ],
             ),
@@ -85,24 +85,23 @@ class _HomeState extends State<Home> {
   }
 
   _salvarAtualizarAnotacao({Anotacao anotacaoSelecionada}) async {
-    String titulo = _tituloController.text;
-    String descricao = _descricaoController.text;
+    String mercadoria =  _mercadoriaController.text;
+    String quantidade = _quantidadeController.text;
 
     if (anotacaoSelecionada == null) {
       //salvar
       Anotacao anotacao =
-      Anotacao(titulo, descricao, DateTime.now().toString());
+      Anotacao(mercadoria, quantidade);
       int resultado = await _db.salvarAnotacao(anotacao);
     } else {
       //atualizar
-      anotacaoSelecionada.titulo = titulo;
-      anotacaoSelecionada.descricao = descricao;
-      anotacaoSelecionada.data = DateTime.now().toString();
+      anotacaoSelecionada.mercadoria = mercadoria;
+      anotacaoSelecionada.quantidade = quantidade;
       int resultado = await _db.atualizarAnotacao(anotacaoSelecionada);
     }
 
-    _tituloController.clear();
-    _descricaoController.clear();
+    _mercadoriaController.clear();
+    _quantidadeController.clear();
 
     _recuperarAnotacoes();
   }
@@ -136,10 +135,13 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /*
       appBar: AppBar(
         title: Text("Minhas anotações"),
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.black,
       ),
+     */
+     appBar: _titulo(),
       body: Column(
         children: <Widget>[
           Expanded(
@@ -150,9 +152,9 @@ class _HomeState extends State<Home> {
 
                     return Card(
                       child: ListTile(
-                        title: Text(anotacao.titulo),
-                        subtitle: Text(
-                            "${_formatarData(anotacao.data)} - ${anotacao.descricao}"),
+                        //title: Text(anotacao.mercadoria),
+                        title: Text(
+                            "${(anotacao.mercadoria)} ( ${anotacao.quantidade} )"),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
@@ -187,14 +189,35 @@ class _HomeState extends State<Home> {
                   }))
         ],
       ),
+
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.black,
           foregroundColor: Colors.white,
           child: Icon(Icons.add),
           onPressed: () {
             _exibirTelaCadastro();
           }),
     );
+
+
   }
+
 }
+_titulo() {
+  return
+    AppBar(
+      title: Text(
+        "MINHA LISTA DE COMPRAS ",
+        //exercicio solicita cor da fonte BRANCA
+        style:TextStyle(
+          color:Colors.white,
+        ),
+      ),
+      centerTitle: true,
+      // fundo de tela PRETO
+      backgroundColor: Colors.black,
+    );
+}
+
+
 
